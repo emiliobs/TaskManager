@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using TaskManagerRepositories.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +9,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(Options =>
 {
     Options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContextConnection"));
 });
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 
